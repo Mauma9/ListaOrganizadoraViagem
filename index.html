@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Enter your description here" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Planner de Viagem</title>
+
+</head>
+
+<body>
+  <div class="container-sm">
+    <div class="card mt-5 painel">
+
+      <div class="card-header bg-primary text-white">
+        Lista Organizadora de Malas
+      </div>
+
+      <div class="card-body">
+
+        <div class="d-flex row">
+
+          <div class="col-11">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#modalLooks">Looks</button>
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNecessaire">
+              Necessaire
+            </button>
+          </div>
+
+
+          <div class="col-1">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovaViagem">
+              Nova Viagem
+            </button>
+          </div>
+
+        </div>
+
+        <div>
+          <label for="">Viagens Salvas</label>
+          <table class="table table-hover table-bordered table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Destino</th>
+                <th scope="col">Quantidade de Dias</th>
+                <th scope="col">Época do ano</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody class="text-white">
+              <tr>
+                <th scope="row">1</th>
+                <td>São Paulo</td>
+                <td>15</td>
+                <td>Inverno</td>
+                <td>
+                  <div role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary">Editar</button>
+                    <button type="button" class="btn btn-danger">Excluir</button>
+                    <button type="button" class="btn btn-success">Gerar Lista</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalLooks" tabindex="-1" aria-labelledby="modalLooks" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLooks">Looks Salvos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalNecessaire" tabindex="-1" aria-labelledby="modalNecessaire" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="Necessaire">Itens</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="modalNovaViagem" tabindex="-1" aria-labelledby="modalNovaViagemLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalNovaViagemLabel">Planejamento da Próxima Viagem</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-12">
+              <label for="">Destino</label>
+              <input type="text" name="" id="" class="form-control">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-6">
+              <label for="">Dias de Trabalho</label>
+              <input type="text" name="" id="" class="form-control">
+            </div>
+            <div class="col-6">
+              <label for="">Data de Inicio</label>
+              <input type="date" name="" id="" class="form-control">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-6">
+              <label for="">Época do Ano</label>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Selecione a Época do Ano</option>
+                <option value="1">Primavera</option>
+                <option value="2">Verão</option>
+                <option value="3">Outono</option>
+                <option value="4">Inverno</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="">Data de Fim</label>
+              <input type="date" name="" id="" class="form-control">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <label for="">Especiais</label>
+            <div class="col-12">
+
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch>
+                <label class="form-check-label" for="checkNativeSwitch">Trilha</label>
+              </div>
+
+
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch>
+                <label class="form-check-label" for="checkNativeSwitch">Cachoeira/Piscina</label>
+              </div>
+
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch>
+                <label class="form-check-label" for="checkNativeSwitch">Neve</label>
+              </div>
+
+
+            </div>
+
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar Viagem</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
