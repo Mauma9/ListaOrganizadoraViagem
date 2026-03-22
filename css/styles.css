@@ -1,117 +1,158 @@
-/* 1. Definição de Variáveis (Design Tokens) */
+/* 1. Variáveis de Design (Tokens) */
 :root {
   /* Modo Claro (Padrão) */
-  --bg-body: #f8f9fa;
-  --bg-card: #ffffff;
-  --text-main: #212529;
-  --text-muted: #6c757d;
-  --border-color: #dee2e6;
-  --shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-
-  /* Cores do Bootstrap mantidas ou suavizadas */
-  --primary-color: #0d6efd;
-  --secondary-color: #6c757d;
+  --bg-body: #ffffff;
+  --bg-card: #fcfcfc;
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --accent-color: #007bff; /* Azul Moderno */
+  --accent-hover: #0056b3;
+  --border-color: #eeeeee;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.05);
+  --radius: 12px;
 }
 
-/* 2. Modo Escuro Automático */
+/* 2. Modo Escuro Ativo */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-body: #121212;
-    --bg-card: #1e1e1e;
-    --text-main: #f8f9fa;
-    --text-muted: #f8f9fa;
-    --border-color: #333333;
-    --shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-
-    --primary-color: #3700b3;
-    /* Um tom de azul mais profundo para o dark mode */
+    --bg-body: #000000; /* Preto absoluto */
+    --bg-card: #121212; /* Cinza escuro para profundidade */
+    --text-main: #ffffff; /* Branco puro */
+    --text-muted: #a0a0a0;
+    --accent-color: #0d6efd;
+    --accent-hover: #3d8bfd;
+    --border-color: #2a2a2a;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.6);
   }
 }
 
-/* 3. Estilos Gerais */
+/* 3. Estilos Base */
 body {
   background-color: var(--bg-body);
   color: var(--text-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', -apple-system, sans-serif;
+  letter-spacing: -0.01em;
+  transition: all 0.3s ease;
 }
 
-/* 4. Classes do Componente Painel */
+/* 4. Painéis e Cards */
 .painel {
   background-color: var(--bg-card) !important;
   border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
-  font-weight: bold;
-  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius);
   overflow: hidden;
 }
 
-.painel .card-header {
-  border-bottom: 1px solid var(--border-color);
+.card-header {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  padding: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-color);
 }
 
-/* 5. Customização da Tabela para Dark Mode (Correção de Visibilidade) */
+/* 5. Tabelas Modernas - Correção de Contraste */
 .table {
-  --bs-table-bg: transparent;
-  /* Garante que a tabela não tenha fundo sólido próprio */
-  --bs-table-color: var(--text-main);
-  /* Força o texto a usar sua variável */
-  color: var(--text-main);
+  --bs-table-bg: transparent; /* Remove fundos automáticos do Bootstrap */
+  color: var(--text-main) !important; /* Força a cor principal (Branco no Dark / Preto no Light) */
   border-color: var(--border-color);
-  vertical-align: middle;
+  margin-bottom: 0;
 }
 
-/* Forçar cores nas linhas da tabela para evitar que herdem cores escuras do Bootstrap */
 .table tbody td,
 .table tbody th {
-  background-color: var(--bg-card);
-  /* Mantém a cor do card por padrão */
-  color: var(--text-main);
+  color: var(--text-main) !important; /* Garante que cada célula tenha contraste máximo */
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem;
 }
 
-/* Ajuste das listras (striped) para o modo escuro */
-.table-striped>tbody>tr:nth-of-type(odd)>* {
-  --bs-table-accent-bg: rgba(255, 255, 255, 0.05);
-  /* Um cinza bem sutil para as listras */
-  color: var(--text-main);
+/* Deixa o cabeçalho um pouco mais destacado com o azul accent */
+.table thead th {
+  background-color: rgba(13, 110, 253, 0.08) !important;
+  color: var(--accent-color) !important;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  border: none;
 }
 
-/* Efeito de Hover (Passar o mouse) */
-.table-hover tbody tr:hover td,
-.table-hover tbody tr:hover th {
-  background-color: rgba(13, 110, 253, 0.15) !important;
-  /* Azul suave do Bootstrap */
-  color: var(--text-main);
-  cursor: pointer;
+/* Ajuste das listras para não "matar" a leitura no escuro */
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+  box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.02);
 }
 
-/* 6. Estilos do Modal */
+/* 6. Modais e Listas */
 .modal-content {
   background-color: var(--bg-card);
-  color: var(--text-main);
+  border-radius: 16px;
   border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
 }
 
-.modal-header {
-  border-bottom: 1px solid var(--border-color);
+.list-group-item {
+  background-color: transparent !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+  border-radius: 8px !important;
+  margin-bottom: 8px;
+  transition: transform 0.2s, border-color 0.2s;
 }
 
-.modal-footer {
-  border-top: 1px solid var(--border-color);
+.list-group-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-color) !important;
 }
 
-/* 7. Inputs e Selects adaptáveis */
-.form-control,
-.form-select {
-  background-color: var(--bg-body);
-  border-color: var(--border-color);
-  color: var(--text-main);
+/* 7. Inputs e Botões */
+.form-control, .form-select {
+  background-color: var(--bg-body) !important;
+  border: 1.5px solid var(--border-color);
+  color: var(--text-main) !important;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
 }
 
-.form-control:focus,
-.form-select:focus {
-  background-color: var(--bg-body);
-  color: var(--text-main);
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+.form-control:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* 8. Estilo de Itens Desabilitados (Trava de Looks) */
+input.form-check-input:disabled + label {
+  color: var(--text-muted);
+  opacity: 0.5;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+/* Esconder scrollbar mas manter funcionalidade */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-body);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
 }
